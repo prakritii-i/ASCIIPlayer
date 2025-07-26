@@ -31,7 +31,10 @@ except ValueError:
     pass
 
 width = args.width
-characters = [' ', '.', ',', '-', '~', ':', ';', '=', '!', '*', '#', '$', '@']
+characters = [' ', '.', '\'', '`', '^', '"', ',', ':', ';', 'I', 'l', '!', 'i', '>', '<', '~', '+', '_',
+              '-', '?', ']', '[', '}', '{', '1', ')', '(', '|', '\\', '/', 't', 'f', 'j', 'r', 'x', 'n',
+              'u', 'v', 'c', 'z', 'X', 'Y', 'U', 'J', 'C', 'L', 'Q', '0', 'O', 'Z', 'm', 'w', 'q', 'p',
+              'd', 'b', 'k', 'h', 'a', 'o', '*', '#', 'M', 'W', '&', '8', '%', 'B', '@', '$']
 if args.inv:
     characters = characters[::-1]
 char_range = int(255 / len(characters))
@@ -76,7 +79,7 @@ def paint_embedding(window: curses.window, embedding: str, embedding_height: int
             )
         except:
             pass
-
+fps = 0
 
 try:
     if type(video) is str \
@@ -111,7 +114,6 @@ try:
             embedding = f.read()
     embedding_height = len(embedding.split("\n"))
 
-    fps = 0
     frame_count = 0
     frames_per_ms = args.fps / 1000
     start = time.perf_counter_ns() // 1000000
